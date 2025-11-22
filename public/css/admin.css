@@ -1,0 +1,17 @@
+
+
+.th-actions {
+    width: 150px;
+    text-align: center;
+}
+
+.th-image {
+    width: 80px !important;
+    text-align: center;
+}
+
+td img {
+    max-width: 80px !important;
+    height: auto;
+    border-radius: 5px;
+}

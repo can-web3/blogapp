@@ -20,6 +20,20 @@
                 value: old?.name || writer.name, 
             }) %>
 
+            <!-- birthday -->
+            <%- include('../../partials/date-input.ejs', { 
+                name: 'birthday', 
+                title: 'Doğum Yılı', 
+                value: old?.birthday || writer.birthday, 
+            }) %>
+
+            <!-- short_description -->
+            <%- include('../../partials/input.ejs', { 
+                name: 'short_description', 
+                title: 'Kısa Açıklama', 
+                value: old?.short_description || writer.short_description, 
+            }) %>
+
             <!-- btn submit -->
             <%- include('../../partials/btn-submit.ejs') %>
         </form>

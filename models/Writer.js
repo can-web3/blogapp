@@ -10,6 +10,15 @@ const WriterSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true
+  },
+  birthday: {
+    type: Date,
+    required: true
+  },
+  short_description: {
+    type: String,
+    required: true,
+    trim: true
   }
 }, { timestamps: true });
 

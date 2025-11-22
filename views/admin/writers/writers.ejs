@@ -14,6 +14,8 @@
                     <tr>
                         <th class="th-image">Resim</th>
                         <th>Adı</th>
+                        <th>Doğum Tarihi</th>
+                        <th>Kısa Açıklama</th>
                         <th class="th-actions">İşlemler</th>
                     </tr>
                 </thead>
@@ -24,6 +26,8 @@
                                 <img src="<%= writer.image %>" alt="<%= writer.name %>">
                             </td>
                             <td><%= writer.name %></td>
+                            <td><%= writer.birthday ? writer.birthday.toLocaleDateString('tr-TR') : 'Belirtilmemiş' %></td>
+                            <td><%= writer.short_description %></td>
                             <td>
                                 <a href="<%= routes.adminWritersEdit.replace(':id', writer._id) %>" class="btn btn-sm btn-warning me-2">Düzenle</a>
                                 <button 

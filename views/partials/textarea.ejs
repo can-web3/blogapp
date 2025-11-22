@@ -1,0 +1,16 @@
+<div class="col-12">
+    <label for="<%= name %>" class="form-label"><%= title %>:</label>
+
+    <textarea 
+        name="<%= name %>" 
+        id="<%= name %>" 
+        class="form-control <%= errors && errors[0]?.[name] ? 'is-invalid' : '' %>"
+        placeholder="<%= title %> giriniz"
+    ><%= value || '' %></textarea>
+
+    <% if (errors && errors[0]?.[name]) { %>
+        <div class="invalid-feedback d-block">
+            <%= errors[0]?.[name][0] %>
+        </div>
+    <% } %>
+</div>

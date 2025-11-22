@@ -13,6 +13,27 @@ exports.createWriterValidation = (req, res, next) => {
         "string.max": "Yazar adı en fazla 50 karakter olabilir.",
         "any.required": "Yazar adı zorunludur."
       }),
+    birthday: Joi.date()
+      .less('now')  
+      .iso()
+      .required()
+      .messages({
+        "date.base": "Doğum tarihi geçerli bir tarih olmalıdır.",
+        "date.less": "Doğum tarihi bugünden sonraki bir tarih olamaz.",
+        "date.format": "Tarih formatı YYYY-MM-DD olmalıdır.",
+        "any.required": "Doğum tarihi zorunludur."
+      }),
+    short_description: Joi.string()
+      .trim()
+      .min(5)
+      .max(255)
+      .required()
+      .messages({
+        "string.empty": "Kısa açıklama boş olamaz.",
+        "string.min": "Kısa açıklama en az 5 karakter olmalıdır.",
+        "string.max": "Kısa açıklama en fazla 255 karakter olabilir.",
+        "any.required": "Kısa açıklama zorunludur."
+      }),
   });
 
   const { error } = schema.validate(req.body, { abortEarly: false });
@@ -51,6 +72,27 @@ exports.editWriterValidation = (req, res, next) => {
         "string.min": "Yazar adı en az 2 karakter olmalıdır.",
         "string.max": "Yazar adı en fazla 50 karakter olabilir.",
         "any.required": "Yazar adı zorunludur."
+      }),
+    birthday: Joi.date()
+      .less('now')  
+      .iso() 
+      .required()
+      .messages({
+        "date.base": "Doğum tarihi geçerli bir tarih olmalıdır.",
+        "date.less": "Doğum tarihi bugünden sonraki bir tarih olamaz.",
+        "date.format": "Tarih formatı YYYY-MM-DD olmalıdır.",
+        "any.required": "Doğum tarihi zorunludur."
+      }),
+    short_description: Joi.string()
+      .trim()
+      .min(5)
+      .max(255)
+      .required()
+      .messages({
+        "string.empty": "Kısa açıklama boş olamaz.",
+        "string.min": "Kısa açıklama en az 5 karakter olmalıdır.",
+        "string.max": "Kısa açıklama en fazla 255 karakter olabilir.",
+        "any.required": "Kısa açıklama zorunludur."
       }),
   });
 

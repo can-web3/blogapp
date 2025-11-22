@@ -19,7 +19,7 @@ exports.get_create_writer = (req, res) => {
 
 exports.post_create_writer = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, birthday, short_description } = req.body;
 
     const exists = await Writer.findOne({ name: name.trim() });
     if (exists) {
@@ -32,7 +32,9 @@ exports.post_create_writer = async (req, res) => {
 
     await Writer.create({
       name,
-      image: imagePath
+      image: imagePath,
+      birthday,
+      short_description
     });
 
     req.flash("alert_type", "success");
@@ -59,7 +61,7 @@ exports.get_edit_writer = async (req, res) => {
 
 exports.post_edit_writer = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, birthday, short_description } = req.body;
     const writer = await Writer.findById(req.params.id);
     if (!writer) {
       req.flash("alert_type", "danger");
@@ -67,6 +69,8 @@ exports.post_edit_writer = async (req, res) => {
       return res.redirect(routes.adminWriters);
     }
     writer.name = name;
+    writer.birthday = birthday;
+    writer.short_description = short_description;
 
     if (req.file) {
       const imagePath = `/uploads/${req.file.filename}`;

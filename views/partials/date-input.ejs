@@ -1,0 +1,22 @@
+<%
+  const colClassVariable = typeof colClass !== 'undefined' ? colClass : 'col-md-6';
+%>
+
+<div class="<%= colClassVariable %>">
+    <label for="<%= name %>" class="form-label"><%= title %>:</label>
+
+    <input 
+        type="date"
+        name="<%= name %>" 
+        id="<%= name %>" 
+        class="date-input form-control <%= errors && errors[0]?.[name] ? 'is-invalid' : '' %>"
+        value="<%= value || '' %>" 
+        placeholder="<%= title %> giriniz"
+    >
+
+    <% if (errors && errors[0]?.[name]) { %>
+        <div class="invalid-feedback d-block">
+            <%= errors[0]?.[name][0] %>
+        </div>
+    <% } %>
+</div>

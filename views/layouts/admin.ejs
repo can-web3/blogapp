@@ -29,6 +29,10 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
 	<link rel="stylesheet" href="/css/admin.css">
 
 	<title><%= title %></title>
@@ -438,11 +442,32 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+	
 	<script>
 		$(document).ready(function() {
 			$('.datatable').DataTable({
 				language: {
 					url: '/json/datatable-tr.json'
+				}
+			});
+
+			flatpickr(".date-input", {
+				dateFormat: "Y-m-d",
+				altInput: true,
+				altFormat: "d-m-Y",
+				locale: {
+					weekdays: {
+						longhand: ['Pazar', 'Pazartesi','Salı','Çarşamba','Perşembe', 'Cuma','Cumartesi'],
+						shorthand: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt']
+					},
+					months: {
+						longhand: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos', 'Eylül','Ekim','Kasım','Aralık'],
+						shorthand: ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara']
+					},
+					today: 'Bugün',
+					clear: 'Temizle'
 				}
 			});
 

@@ -6,7 +6,8 @@ const adminWriterController = require("../controllers/adminWriterController");
 const { createCategoryValidation } = require("../validations/categoryValidation");
 const { createWriterValidation, editWriterValidation } = require("../validations/writerValidation");
 const uploadImage = require("../middlewares/uploadImage");
-const Writer = require("../models/Writer");
+const adminPublisherController = require("../controllers/adminPublisherController");
+const { createPublisherValidation } = require("../validations/publisherValidation");
 
 router.use((req, res, next) => {
   res.locals.layout = "layouts/admin";
@@ -52,5 +53,16 @@ router.post(
 router.post(routes.adminWritersDelete, adminWriterController.post_delete_writer);
 // writers end
 
+// publishers start
+router.get(routes.adminPublishers, adminPublisherController.get_publishers);
+
+router.get(routes.adminPublishersCreate, adminPublisherController.get_create_publisher);
+router.post(routes.adminPublishers, createPublisherValidation, adminPublisherController.post_create_publisher);
+
+router.get(routes.adminPublishersEdit, adminPublisherController.get_edit_publisher);
+router.post(routes.adminPublishersShow, adminPublisherController.post_edit_publisher);
+
+router.post(routes.adminPublishersDelete, adminPublisherController.post_delete_publisher);
+// publishers end
 
 module.exports = router;

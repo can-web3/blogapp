@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between align-items-center gap-4 flex-wrap">
+    <h1 class="h6 mb-0 text-uppercase"><%= title %></h1>
+    <a href="<%= routes.adminPublishersCreate %>" class="btn btn-success d-flex align-items-center">
+        <i class="fas fa-plus"></i>
+        Ekle
+    </a>
+</div>
+<hr/>
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="datatable table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Adı</th>
+                        <th>Kısa Açıklama</th>
+                        <th class="th-actions">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% publishers.forEach(publisher => { %>
+                        <tr>
+                            <td><%= publisher.name %></td>
+                            <td><%= publisher.short_description %></td>
+                            <td>
+                                <a href="<%= routes.adminPublishersEdit.replace(':id', publisher._id) %>" class="btn btn-sm btn-warning me-2">Düzenle</a>
+                                <button 
+                                    type="button" 
+                                    class="btn-delete btn btn-sm btn-danger"
+                                    data-route="<%= routes.adminPublishersDelete.replace(':id', publisher._id) %>"
+                                    data-name="<%= publisher.name %> yayıncısını silmek istediğinize emin misiniz?"
+                                >
+                                    Kaldır
+                                </button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

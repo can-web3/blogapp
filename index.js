@@ -8,7 +8,7 @@ const connectDB = require("./config/db");
 const session = require("express-session");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
-const adminRoutes = require("./routes/admin");
+const adminRoutes = require("./routes/admin.routes");
 
 connectDB();
 
@@ -49,71 +49,6 @@ app.get(routes.home, (req, res) => {
 });
 
 app.use("/", adminRoutes);
-
-// app.use("/admin", (req, res, next) => {
-//   res.locals.layout = "layouts/admin"; 
-//   next();
-// });
-
-// app.get(routes.admin, (req, res) => {
-//   res.render("admin/dashboard", { title: "Admin Paneli" });
-// });
-
-// app.get(routes.adminCategories, async (req, res) => {
-//   const categories = await Category.find();
-//   res.render("admin/categories/categories", { title: "Kategoriler", categories });
-// });
-
-// app.get(routes.adminCategoriesCreate, (req, res) => {
-//   res.render("admin/categories/create-category", { title: "Kategori Ekle" });
-// });
-
-// app.post(routes.adminCategories, async (req, res) => {
-//   try {
-//     const { name } = req.body;
-
-//     await Category.create({ name });
-
-//     req.flash("alert_type", "success");
-//     req.flash("alert_message", "Kategori eklendi!");
-//     res.redirect(routes.adminCategories);
-//   } catch (err) {
-//     res.send("Hata: " + err.message);
-//   }
-// });
-
-// app.get(routes.adminCategoriesEdit, async (req, res) => {
-//   try {
-//     const category = await Category.findById(req.params.id);
-//     res.render("admin/categories/edit-category", { title: "Kategori Düzenle", category });
-//   } catch (err) {
-//     res.send("Hata: " + err.message);
-//   }
-// });
-
-// app.post(routes.adminCategoriesShow, async (req, res) => {
-//   try {
-//     const { name } = req.body;
-//     await Category.findByIdAndUpdate(req.params.id, { name });
-
-//     req.flash("alert_type", "success");
-//     req.flash("alert_message", "Kategori güncellendi!");
-//     res.redirect(routes.adminCategories);
-//   } catch (err) {
-//     res.send("Hata: " + err.message);
-//   }
-// });
-
-// app.post(routes.adminCategoriesDelete, async (req, res) => {
-//   try {
-//     await Category.findByIdAndDelete(req.params.id);
-//     req.flash("alert_type", "success");
-//     req.flash("alert_message", "Kategori silindi!");
-//     res.redirect(routes.adminCategories);
-//   } catch (err) {
-//     res.send("Hata: " + err.message);
-//   }
-// });
 
 app.listen(process.env.PORT, () => {
   console.log(`Server çalışıyor: http://localhost:${process.env.PORT}`);

@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const routes = require("../routes"); 
-const adminCategoryController = require("../controllers/AdminCategoryController");
-const adminWriterController = require("../controllers/adminWriterController");
-const { createCategoryValidation } = require("../validations/categoryValidation");
-const { createWriterValidation, editWriterValidation } = require("../validations/writerValidation");
+const adminCategoryController = require("../controllers/category.controller");
+const adminWriterController = require("../controllers/writer.controller");
+const { createCategoryValidation } = require("../validations/category.validation");
+const { createWriterValidation, editWriterValidation } = require("../validations/writer.validation");
 const uploadImage = require("../middlewares/uploadImage");
-const adminPublisherController = require("../controllers/adminPublisherController");
-const { createPublisherValidation } = require("../validations/publisherValidation");
+const adminPublisherController = require("../controllers/publisher.controller");
+const { createPublisherValidation } = require("../validations/publisher.validation");
+const adminProductController = require("../controllers/product.controller");
+const { createProductValidation, editProductValidation } = require("../validations/product.validation");
 
 router.use((req, res, next) => {
   res.locals.layout = "layouts/admin";
@@ -64,5 +66,27 @@ router.post(routes.adminPublishersShow, adminPublisherController.post_edit_publi
 
 router.post(routes.adminPublishersDelete, adminPublisherController.post_delete_publisher);
 // publishers end
+
+// products start
+router.get(routes.adminProducts, adminProductController.get_products);
+
+router.get(routes.adminProductsCreate, adminProductController.get_create_product);
+router.post(
+  routes.adminProducts,
+  uploadImage.single("image"),
+  createProductValidation, 
+  adminProductController.post_create_product
+);
+
+router.get(routes.adminProductsEdit, adminProductController.get_edit_product);
+router.post(
+  routes.adminProductsShow,
+  uploadImage.single('image'),
+  editProductValidation,
+  adminProductController.post_edit_product
+);
+
+router.post(routes.adminProductsDelete, adminProductController.post_delete_product);
+// products end
 
 module.exports = router;

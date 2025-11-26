@@ -1,4 +1,4 @@
-const Publisher = require("../models/Publisher");
+const Publisher = require("../models/publisher.model");
 const routes = require("../routes");
 
 exports.get_publishers = async (req, res) => {
@@ -103,3 +103,4 @@ exports.post_delete_publisher = async (req, res) => {
     res.send("Hata: " + err.message);
   }
 };
+

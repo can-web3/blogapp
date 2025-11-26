@@ -1,4 +1,4 @@
-const Writer = require("../models/Writer");
+const Writer = require("../models/writer.model");
 const routes = require("../routes");
 
 exports.get_writers = async (req, res) => {

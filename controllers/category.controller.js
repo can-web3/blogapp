@@ -1,4 +1,4 @@
-const Category = require("../models/Category");
+const Category = require("../models/category.model");
 const routes = require("../routes");
 
 exports.get_categories = async (req, res) => {

@@ -19,5 +19,11 @@ module.exports = {
     adminPublishersCreate: "/admin/yayincilar/ekle",
     adminPublishersEdit: "/admin/yayincilar/:id/duzenle",
     adminPublishersShow: "/admin/yayincilar/:id",
-    adminPublishersDelete: "/admin/yayincilar/:id/sil"
+    adminPublishersDelete: "/admin/yayincilar/:id/sil",
+
+    adminProducts: "/admin/urunler",
+    adminProductsCreate: "/admin/urunler/ekle",
+    adminProductsEdit: "/admin/urunler/:id/duzenle",
+    adminProductsShow: "/admin/urunler/:id",
+    adminProductsDelete: "/admin/urunler/:id/sil",
 };
